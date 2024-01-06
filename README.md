@@ -1,2 +1,2 @@
 # Games
-Simple games 
+Simple games: Tic-Tac-Toe, Puzzle

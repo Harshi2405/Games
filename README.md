@@ -5,8 +5,10 @@ Simple games: Tic-Tac-Toe, Puzzle
 
 Tic-Tac-Toe: https://harshi2405.tiiny.site/
 
-Puzzle
+Puzzle: https://harshi2405-puzzle.tiiny.site/
 
-# Android App: 
+# Android Apps: 
 
 Tic-Tac-Toe 1.0.zip
+
+Puzzle 1.0.zip

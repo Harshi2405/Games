@@ -1,57 +1,50 @@
-let currentPlayer = 'X';
-let gameBoard = ['', '', '', '', '', '', '', '', ''];
-let gameActive = true;
-
-function handleClick(index) {
-  if (gameBoard[index] === '' && gameActive) {
-    gameBoard[index] = currentPlayer;
-    document.getElementsByClassName('cell')[index].textContent = currentPlayer;
-
-    if (checkWin()) {
-      document.getElementById('message').textContent = `Player ${currentPlayer} wins!`;
-      gameActive = false;
-    } else if (checkDraw()) {
-      document.getElementById('message').textContent = 'It\'s a draw!';
-      gameActive = false;
-    } else {
-      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    }
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-function checkWin() {
-    const winningCombinations = [
-        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-        [0, 4, 8], [2, 4, 6]             // Diagonals
-    ];
-
-    for (const combination of winningCombinations) {
-        const [a, b, c] = combination;
-        if (gameBoard[a] !== '' && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
-            return true;
-        }
-    }
-
-    return false;
+#title {
+  margin-bottom: 20px; /* Add spacing before the board */
 }
 
-function checkDraw() {
-    return !gameBoard.includes('');
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 5px;
 }
 
-// Reset button functionality
-const resetButton = document.getElementById('reset-button');
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 
-resetButton.addEventListener('click', () => {
-  gameBoard = ['', '', '', '', '', '', '', '', ''];
-  currentPlayer = 'X';
-  gameActive = true;
+#message {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
 
-  const cells = document.getElementsByClassName('cell');
-  for (let i = 0; i < cells.length; i++) {
-    cells[i].textContent = '';
-  }
-
-  document.getElementById('message').textContent = '';
-});
+#reset-button {
+  margin-top: 20px; /* Add spacing below the board */
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
